@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車のクイズゲーム</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/card_race.css">
+    <link rel="stylesheet" href="css/survival_mode.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen" class="screen">
+            <h1>車のクイズゲーム</h1>
+            <div class="car-image">
+                <img src="images/car_character.png" alt="車のキャラクター" id="main-car">
+            </div>
+            <div class="menu">
+                <h2>学年を選んでね！</h2>
+                <div class="grade-selection">
+                    <button class="grade-btn" data-grade="1">1年生</button>
+                    <button class="grade-btn" data-grade="2">2年生</button>
+                    <button class="grade-btn" data-grade="3">3年生</button>
+                </div>
+                <h2>ゲームモードを選んでね！</h2>
+                <div class="mode-selection">
+                    <button class="mode-btn" data-mode="survival">サバイバルモード</button>
+                    <button class="mode-btn" id="card-race-btn">カードレース</button>
+                    <button class="mode-btn" id="subject-quiz-btn" onclick="window.location.href='subject_quiz.html'">教科別クイズ</button>
+                </div>
+                <button id="start-btn" disabled>はじめる</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="score">スコア: <span id="score">0</span></div>
+                <div class="level">レベル: <span id="level">1</span></div>
+                <div class="lives">ライフ: <span id="lives">3</span></div>
+            </div>
+            
+            <div class="game-area">
+                <div class="car-container">
+                    <img src="images/car_placeholder.png" alt="車" id="player-car">
+                </div>
+                <div class="monster-container">
+                    <img src="images/monster_placeholder.png" alt="モンスター" id="monster">
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question">ここに問題が表示されます</div>
+                <div class="choices-container" id="choices">
+                    <!-- 選択肢がここに表示されます -->
+                </div>
+                <div class="hint-container hidden" id="hint-container">
+                    <p id="hint-text">ヒント: ここにヒントが表示されます</p>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="hint-btn">ヒント</button>
+                <button id="back-to-menu">メニューに戻る</button>
+            </div>
+        </div>
+        
+        <div id="result-screen" class="screen hidden">
+            <h1>ゲーム結果</h1>
+            <div class="result-details">
+                <p>スコア: <span id="final-score">0</span></p>
+                <p>正解数: <span id="correct-answers">0</span></p>
+                <p>間違い数: <span id="wrong-answers">0</span></p>
+            </div>
+            <div class="car-showcase">
+                <img src="images/car_placeholder.png" alt="車" id="result-car">
+                <p>獲得した車のパーツ: <span id="parts-earned">0</span>個</p>
+            </div>
+            <button id="play-again">もう一度遊ぶ</button>
+            <button id="customize-car">車をカスタマイズする</button>
+        </div>
+        
+        <!-- カードレースゲーム画面 -->
+        <div id="card-race-screen" class="screen hidden">
+            <h1>カードレース</h1>
+            <div class="race-track">
+                <div class="race-lane">
+                    <div class="race-car" id="race-player-car"></div>
+                </div>
+                <div class="race-lane">
+                    <div class="race-car" id="race-computer-car"></div>
+                </div>
+                <div class="finish-line"></div>
+            </div>
+            
+            <div class="card-area">
+                <div id="card-deck">カードをクリック</div>
+                <div id="card-display"></div>
+            </div>
+            
+            <div class="race-info">
+                <p id="turn-info">あなたの番です。カードをクリックしてください。</p>
+                <p id="game-result"></p>
+            </div>
+            
+            <div class="race-controls">
+                <button id="restart-race">もう一度レースする</button>
+                <button id="race-back-to-menu">メニューに戻る</button>
+            </div>
+        </div>
+        
+        <!-- サバイバルモード画面 -->
+        <div id="survival-screen" class="screen hidden">
+            <h1>サバイバルモード</h1>
+            
+            <!-- サバイバルモードのスタート画面 -->
+            <div id="survival-start-screen">
+                <p>学年を選んでください</p>
+                <div class="survival-grade-selection">
+                    <button class="survival-grade-btn" data-grade="1">1年生</button>
+                    <button class="survival-grade-btn" data-grade="2">2年生</button>
+                    <button class="survival-grade-btn" data-grade="3">3年生</button>
+                </div>
+                <button id="survival-start-btn" disabled>スタート</button>
+            </div>
+            
+            <!-- 続きからプレイするか選択する画面 -->
+            <div id="survival-continue-screen" class="hidden">
+                <p>前回のデータが見つかりました。どうしますか？</p>
+                <div class="continue-options">
+                    <label class="continue-option">
+                        <input type="radio" name="continue-choice" value="continue" checked>
+                        続きからプレイする
+                    </label>
+                    <label class="continue-option">
+                        <input type="radio" name="continue-choice" value="new">
+                        新しくはじめる
+                    </label>
+                </div>
+                <button id="survival-continue-btn">決定</button>
+            </div>
+            
+            <!-- サバイバルモードのゲーム画面 -->
+            <div id="survival-game-screen" class="hidden">
+                <div class="survival-header">
+                    <div>スコア: <span id="survival-score">0</span></div>
+                    <div>進捗: <span id="survival-progress">1問目</span></div>
+                    <div>ライフ: <span id="survival-lives">3</span></div>
+                </div>
+                
+                <div class="survival-question-container">
+                    <div id="survival-question">ここに問題が表示されます</div>
+                    <div id="survival-choices">
+                        <!-- 選択肢がここに表示されます -->
+                    </div>
+                    <p id="survival-result"></p>
+                    <p id="survival-explanation"></p>
+                </div>
+                
+                <div class="survival-controls">
+                    <button id="survival-next">次の問題</button>
+                    <button id="survival-quit">一時保存して終了</button>
+                </div>
+            </div>
+            
+            <!-- 装備獲得画面 -->
+            <div id="survival-equipment-screen" class="hidden">
+                <h2>新しい装備を獲得しました！</h2>
+                <div class="equipment-showcase">
+                    <div class="equipment-image">
+                        <img src="images/equipment_placeholder.png" alt="装備" id="equipment-image">
+                    </div>
+                    <h3 id="equipment-name">装備名</h3>
+                    <p id="equipment-description">装備の説明</p>
+                </div>
+                <div class="equipment-buttons">
+                    <button id="continue-playing">続ける</button>
+                    <button id="end-game">終了する</button>
+                </div>
+            </div>
+            
+            <!-- ゲームオーバー画面 -->
+            <div id="survival-gameover-screen" class="hidden">
+                <h2 class="gameover-title">ゲームオーバー</h2>
+                <div class="result-details">
+                    <p>最終スコア: <span id="final-survival-score">0</span></p>
+                    <p>正解数: <span id="final-correct-answers">0</span></p>
+                    <p>間違い数: <span id="final-wrong-answers">0</span></p>
+                </div>
+                <div class="equipment-details">
+                    <h3>獲得した装備 (<span id="equipment-count">0</span>個)</h3>
+                    <ul id="equipment-list">
+                        <!-- 装備リストがここに表示されます -->
+                    </ul>
+                </div>
+                <div class="gameover-buttons">
+                    <button id="play-again">もう一度プレイ</button>
+                    <button id="back-to-menu-btn">メニューに戻る</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/game.js"></script>
+    <script src="js/card_race.js"></script>
+    <script src="js/survival_mode.js"></script>
+</body>
+</html>

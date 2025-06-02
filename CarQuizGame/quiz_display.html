@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車のクイズ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz_display.css">
+</head>
+<body>
+    <div id="quiz-display-screen">
+        <h1>車のクイズ</h1>
+        
+        <div class="quiz-image">
+            <img src="images/car_placeholder.png" alt="車の画像">
+        </div>
+        
+        <div id="quiz-container">
+            <h2 id="quiz-question"></h2>
+            <div id="quiz-choices"></div>
+            <p id="quiz-result"></p>
+            <p id="quiz-explanation"></p>
+            <button id="next-quiz">次の問題</button>
+        </div>
+        
+        <div class="quiz-controls">
+            <button id="back-to-menu" onclick="window.location.href='index.html'">メニューに戻る</button>
+        </div>
+    </div>
+    
+    <script src="js/quiz_display.js"></script>
+</body>
+</html>

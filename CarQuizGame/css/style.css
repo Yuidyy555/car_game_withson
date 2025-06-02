@@ -1,0 +1,276 @@
+/* 全体のスタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, #87CEEB, #1E90FF);
+}
+
+#game-container {
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.screen {
+    padding: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+/* スタート画面 */
+#start-screen h1 {
+    color: #FF6B6B;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.car-image {
+    margin: 20px 0;
+}
+
+.car-image img {
+    width: 200px;
+    height: auto;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.menu h2 {
+    color: #4A90E2;
+    margin: 15px 0;
+    font-size: 1.5rem;
+}
+
+.grade-selection, .mode-selection {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.grade-btn, .mode-btn {
+    background-color: #4A90E2;
+}
+
+.grade-btn.selected, .mode-btn.selected {
+    background-color: #FF6B6B;
+    transform: scale(1.1);
+}
+
+#start-btn {
+    background-color: #FF6B6B;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    margin-top: 20px;
+}
+
+/* ゲーム画面 */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #4A90E2;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+    height: 200px;
+}
+
+.car-container, .monster-container {
+    width: 40%;
+    text-align: center;
+}
+
+.car-container img, .monster-container img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}
+
+.question-container {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.choices-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.choice-btn {
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.choice-btn:hover {
+    background-color: #357ABD;
+}
+
+.hint-container {
+    background-color: #FFF9C4;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#hint-btn {
+    background-color: #FFC107;
+}
+
+#back-to-menu {
+    background-color: #9E9E9E;
+}
+
+/* 結果画面 */
+#result-screen h1 {
+    color: #4A90E2;
+    margin-bottom: 20px;
+}
+
+.result-details {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.result-details p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.car-showcase {
+    margin: 20px 0;
+}
+
+.car-showcase img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#play-again {
+    background-color: #4CAF50;
+    margin-right: 10px;
+}
+
+#customize-car {
+    background-color: #FF6B6B;
+}
+
+/* アニメーション */
+@keyframes attack {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes damage {
+    0%, 100% {
+        opacity: 1;
+    }
+    30%, 60% {
+        opacity: 0.5;
+    }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .choices-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .grade-selection, .mode-selection {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教科別クイズ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/subject_quiz.css">
+</head>
+<body>
+    <div id="subject-quiz-screen">
+        <h1 id="quiz-title">教科別クイズ</h1>
+        
+        <div id="selectors">
+            <div class="selector-group">
+                <label for="grade-selector">学年を選ぶ</label>
+                <select id="grade-selector">
+                    <option value="1">1年生</option>
+                    <option value="2">2年生</option>
+                    <option value="3">3年生</option>
+                </select>
+            </div>
+            
+            <div class="selector-group">
+                <label for="subject-selector">教科を選ぶ</label>
+                <select id="subject-selector">
+                    <!-- JavaScriptで動的に生成 -->
+                </select>
+            </div>
+        </div>
+        
+        <div id="quiz-container">
+            <h2 id="quiz-question"></h2>
+            <div id="quiz-choices"></div>
+            <p id="quiz-result"></p>
+            <p id="quiz-explanation"></p>
+            <button id="next-quiz">次の問題</button>
+        </div>
+        
+        <div class="quiz-controls">
+            <button id="back-to-menu" onclick="window.location.href='index.html'">メニューに戻る</button>
+        </div>
+    </div>
+    
+    <!-- 隠しコマンドとしての豆アイコン（car-quiz-btnのIDも残す） -->
+    <img src="images/bean_icon.png" alt="" id="car-quiz-btn" style="position: fixed; bottom: 10px; right: 10px; width: 40px; height: 40px; cursor: pointer; z-index: 9999; opacity: 0.5;">
+    
+    <script src="js/subject_quiz.js"></script>
+</body>
+</html>

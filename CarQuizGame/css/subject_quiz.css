@@ -1,0 +1,183 @@
+/* 教科別クイズのスタイル */
+#subject-quiz-screen {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+#quiz-title {
+    color: #4A90E2;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#selectors {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selector-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #4A90E2;
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+#quiz-container {
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#quiz-question {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#quiz-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-choice {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quiz-choice:hover {
+    background-color: #e0e0e0;
+}
+
+#quiz-result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 15px 0;
+    min-height: 30px;
+}
+
+#quiz-explanation {
+    background-color: #FFF9C4;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+#next-quiz, #restart-quiz, #back-to-select {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 10px 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#next-quiz:hover, #restart-quiz:hover, #back-to-select:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#back-to-select {
+    background-color: #4A90E2;
+}
+
+.quiz-controls {
+    margin-top: 20px;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#quiz-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 教科別の色 */
+.math-theme {
+    background-color: #E3F2FD;
+}
+
+.japanese-theme {
+    background-color: #F3E5F5;
+}
+
+.science-theme {
+    background-color: #E8F5E9;
+}
+
+.social-theme {
+    background-color: #FFF3E0;
+}
+
+.english-theme {
+    background-color: #E0F7FA;
+}
+
+.car-theme {
+    background-color: #FFEBEE;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    #selectors {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #quiz-question {
+        font-size: 1.3rem;
+    }
+    
+    .quiz-choice {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}

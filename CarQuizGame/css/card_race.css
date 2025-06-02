@@ -1,0 +1,171 @@
+/* カードレースゲームのスタイル */
+#card-race-screen {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.race-track {
+    width: 100%;
+    height: 300px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    position: relative;
+    margin: 20px 0;
+    background-image: linear-gradient(to right, #e0e0e0, #f0f0f0);
+    overflow: hidden;
+}
+
+.race-lane {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    margin: 20px 0;
+    border-bottom: 3px dashed #999;
+}
+
+.race-lane:last-child {
+    border-bottom: none;
+}
+
+.race-car {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    transition: left 0.5s ease-out;
+    left: 0;
+}
+
+#race-player-car {
+    top: 20px;
+    background-color: #FF6B6B;
+    border-radius: 10px;
+}
+
+#race-computer-car {
+    top: 120px;
+    background-color: #4A90E2;
+    border-radius: 10px;
+}
+
+.finish-line {
+    position: absolute;
+    right: 5%;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: #4CAF50;
+    z-index: 1;
+}
+
+.card-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 30px;
+}
+
+#card-deck {
+    width: 100px;
+    height: 150px;
+    background-color: #4A90E2;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+}
+
+#card-deck:hover {
+    transform: scale(1.05);
+}
+
+#card-display {
+    width: 100px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #333;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.race-info {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#game-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+    display: none;
+}
+
+.race-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#restart-race {
+    background-color: #FF6B6B;
+    display: none;
+}
+
+#race-back-to-menu {
+    background-color: #9E9E9E;
+}
+
+/* 車のアニメーション */
+@keyframes engine-running {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.race-car {
+    animation: engine-running 0.3s infinite;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .race-track {
+        height: 200px;
+    }
+    
+    .race-car {
+        width: 60px;
+        height: 30px;
+    }
+    
+    #card-deck, #card-display {
+        width: 80px;
+        height: 120px;
+    }
+}

@@ -1,0 +1,129 @@
+/* クイズ表示用のスタイル */
+#quiz-display-screen {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#quiz-container {
+    margin: 20px 0;
+}
+
+#quiz-question {
+    font-size: 1.5rem;
+    color: #4A90E2;
+    margin-bottom: 20px;
+}
+
+#quiz-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-choice {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quiz-choice:hover {
+    background-color: #e0e0e0;
+}
+
+#quiz-result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 15px 0;
+    min-height: 30px;
+}
+
+#quiz-explanation {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+#next-quiz, #restart-quiz {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 10px auto;
+    display: block;
+}
+
+#next-quiz:hover, #restart-quiz:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.quiz-image {
+    max-width: 200px;
+    margin: 0 auto 20px;
+}
+
+.quiz-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#quiz-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 正解・不正解のエフェクト */
+.correct-answer {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+
+.wrong-answer {
+    background-color: #FF6B6B !important;
+    color: white !important;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    #quiz-question {
+        font-size: 1.3rem;
+    }
+    
+    .quiz-choice {
+        font-size: 1rem;
+        padding: 12px;
+    }
+    
+    #quiz-explanation {
+        font-size: 1rem;
+    }
+}
